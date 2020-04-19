@@ -1,17 +1,4 @@
 
-
-/* Starting the game */
-
-// A timer starts and is displayed on the page.
-// set a variable that has the number of milliseconds
-// Will need to setup a setinterval function
-// if variable reaches 0, clear the timer, example is in 4.08
-// Make sure it works for like 10 seconds and doesn't go below 0, ex no negatives
-// clear the timer when it hits 0
-// clear the middle section and display first question
-
-/* Logic of the quiz */
-// Need something keeping track of score
 var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName("choice-text"));
 
@@ -21,11 +8,6 @@ var score = 0;
 var questionCounter = 0;
 var availableQuestions = [];
 // Need a list of multichoice questions
-// list of questions inside array.
-// what makes a question:
-// answers
-// which answer is right, and which are wrong
-// the actual questions
 var questions =  [
   {
       question: "Commonly used data types DO NOT include:",
@@ -82,7 +64,7 @@ var bonus = 1;
 var maxQuestions = 5;
 var time = 0; 
 var timer = document.getElementById("timer");
-
+//how the game start
 function startGame() {
     questionCounter = 0;
     score = 0;
@@ -109,6 +91,7 @@ function getQuestion() {
 
     takeAnswers = true;
 };
+//trying out something new : fat arrow fundtion  
     choices.forEach(choice => {
     choice.addEventListener("click", event => {
         if(!takeAnswers) return; 
@@ -120,7 +103,7 @@ function getQuestion() {
             classToApply = "correct";
         if(classToApply === "correct"){
             incrementScore(bonus);
-            console.log(score);
+            // console.log(score);
         }    
         }
         selectedChoice.parentElement.classList.add(classToApply);
@@ -128,13 +111,15 @@ function getQuestion() {
             selectedChoice.parentElement.classList.remove(classToApply);
             getQuestion();
         }, 1000);
-        console.log(selectedAnswer == currentQuestion.Answer);
+        // console.log(selectedAnswer == currentQuestion.Answer);
             
     });
 });
+//keeping score. correct answer = +1. incorrect answer get nothing and no minus either.
 incrementScore = num => {
     score += num;
 };
+//timer fundtion. 60 seconds and the game end no matter what. 
 function gameTime (){
     time = time + 1;
     if (time < 61){
@@ -148,7 +133,7 @@ function gameTime (){
 update = setInterval("gameTime()", 1000);
 
 startGame();
-
+//view highscores on the left corner
 var viewHighScores = document.getElementById("viewHighScores");
 viewHighScores.addEventListener("click", function(event){
     var element = event.target;
@@ -157,41 +142,4 @@ viewHighScores.addEventListener("click", function(event){
     }
 });
 
-
-
-
-/* Putting a question on the page */
-// Counter variable starting at 0.
-// Take the first question from the array, this will be an object
-// Grab the title of the question and put it on the page with javascript
-// Grab the answers of the question
-  // Loop through the answers
-  // Put the answers in individual buttons
-  // Have some data on the buttons indicating the value inside (hint data-answer)
-  // event listener to click those answers
-      // when you click the answer, you grab the value of that button and compare to the correct answer
-          // if right, you can keep score the same or increase
-          // if wrong, you can lower the score
-      // after comparison and score calculation,
-          // old question disappears, new question appears
-              // increase the counter by 1 to get to the next question
-          // compare counter to length of the array, if less go to next question
-              // repeat everything we did above
-      // once the counter is equal to length of the array, we don't show the next question, the game ends
-
-      // Last screen all done
-          // Title
-          // Your final score
-          // input
-          // submit button
-      // Once you submit the score
-          // Grab the initial array from localstorage, if there is one, and convert it, otherwise use an empty array
-          // take the score and initials, put it into an array, stringify that array, and then put it in localstorage
-          // You'll save that score, and the initials to localStorage
-// var highscores = [
-//   {
-//       score:
-//       initials
-//   }
-// ]
 

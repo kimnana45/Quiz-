@@ -1,39 +1,27 @@
-// has to reach out to localstorage using the same key that you put the information
-// convert if from string to array
-// make elements, put the info in it, and put it on the page.
-// addeventlistener to clear button, and on click, clear localstorage
-var Ini = document.getElementById("initials");
-var submit = document.getElementById("submitScore");
-var finalScore = document.getElementById("score");
-var recentScores = localStorage.getItem("recentScores");
-
+var highScoresList = document.getElementById("highScoresList");
 var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-// var topfive = 5;
-finalScore.innerHTML = recentScores;
-
-Ini.addEventListener("keyup", () => {
-    console.log(Ini.value);
-    submit.disabled = !Ini.value;
-});
-function saveHighScore(){
-    event.preventDefault();
-    var score = (Ini.value + ":" + recentScores);
-    highScores.push(score);
-    // highScores.sort((a,b) => {
-    //     return b.score - a.score;
-    // });
-    // highScores.splice(5);
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-    console.log(highScores);
-    window.location.assign("highscores.html");
+console.log(highScores);
+var goBack = document.getElementById("back");
+var clear = document.getElementById("clear");
+//try many ways, something is missing? Could not get the score to append :'(
+function showHighScores(){
+    for (var i=0; i< highScoresList.length; i ++){
+        var highScores = score[i];
+        var li = document.createElement("li");
+        li.textContent = highScores;
+        highScoresList.append(highScores);
+    }
 };
+showHighScores();
 
+//button eventlisteners 
+goBack.addEventListener("click", function(event){
+    var element = event.target;
+    if (element.matches("button")=== true){
+        location.assign("start.html");
+    }
+});
 
-
-
-
-
-
-
-
-
+clear.addEventListener("click", function(event){
+    highScoresList.innerHTML= "";
+})
