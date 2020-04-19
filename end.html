@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <!-- Title of page -->
+    <div class="container">
+        <div id = "end" class = "flex-center flex-column">
+            <h1>All Done!</h1>
+            <form>
+                <h5>Your final score is: <span id = "score"></span></h5>
+                <h5>Enter Initials
+                    <input type = "text" id = "initials" placeholder="Initials"/>
+                </h5>
+                <button id = "submitScore"
+                onclick = "saveHighScore(event)"
+                disabled
+                >Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- List of high scores -->
+    <!-- Button that goes back to the game -->
+    <!-- Clear scores button -->
+    <script src="highscores.js"></script>
+</body>
+</html>

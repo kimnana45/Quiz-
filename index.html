@@ -9,24 +9,13 @@
 <body>
     <div class="container">
         <div id = "home" class = "flex-center flex-column">
-
-            <!-- Link to the top left to go to the high scores page -->
-            <!-- Timer on the page that's initially set to 0 -->
-            
-            <!-- Text that explains the game -->
-            <header>
-                <h3 id = "viewHighscores" href ="">View highscores</h3>
-                <h3 id = "timer">Timer</h3>
-            </header>
-            <h1>Test Your Knnowledge on JavaScript</h1>
-            <p>See how well you know JavaScript by taking this quiz. You have 60 seconds to answer the questions.
-                If the option turns green, you got it right! If it turns red, 
-                you are wrong. Try your best!
-            </p>
-            <br>
-            <!-- Button that starts the game -->
-            <button id = "startButton">Click to start</button>
-            <!--question and 4 answer options-->
+        <header>
+        <!-- Link to the top left to go to the high scores page -->
+            <a id = "viewHighscores" href ="highscores.html">View highscores</a>
+        <!-- Timer on the page that's initially set to 0 -->
+            <a id = "timer">Time: 0</a>
+        </header>
+        <!--question and 4 answer options-->
             <h2 id = "question">This is the question</h2>
             <div class= "choice-container">
                 <p class= "choice-text" data-number = "1">Choice 1</p>
@@ -40,13 +29,16 @@
             <div class= "choice-container">
                 <p class= "choice-text" data-number="4">Choice 4</p>
             </div>
-
-
-            
         </div>
     </div>
-    
     
 <script src="script.js"></script>    
 </body>
 </html>
+
+            
+
+
+            
+    
+    

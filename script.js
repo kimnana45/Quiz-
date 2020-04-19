@@ -1,4 +1,4 @@
-// event listener on the button to start the game
+
 
 /* Starting the game */
 
@@ -25,7 +25,7 @@ var availableQuestions = [];
 // what makes a question:
 // answers
 // which answer is right, and which are wrong
-// the actual question
+// the actual questions
 var questions =  [
   {
       question: "Commonly used data types DO NOT include:",
@@ -80,19 +80,21 @@ var questions =  [
 ]
 var bonus = 1;
 var maxQuestions = 5;
+var time = 0; 
+var timer = document.getElementById("timer");
 
-startGame=() => {
-      if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
-        //go to highscore page 
-        //return window.location.assign("highscore.html");   
-      }
+function startGame() {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
     console.log(availableQuestions);
     getQuestion();
 };
-getQuestion=() => {
+function getQuestion() {
+        if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
+        localStorage.setItem("recentScores", score);
+        return window.location.assign("end.html");  
+        }
     questionCounter++;
     var QIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[QIndex];
@@ -133,9 +135,27 @@ getQuestion=() => {
 incrementScore = num => {
     score += num;
 };
+function gameTime (){
+    time = time + 1;
+    if (time < 61){
+        timer.innerHTML = time; 
+    }
+    if (time > 61){
+        clearInterval(update);
+        return window.location.assign("end.html"); 
+    } 
+}
+update = setInterval("gameTime()", 1000);
 
 startGame();
-        
+
+var viewHighScores = document.getElementById("viewHighScores");
+viewHighScores.addEventListener("click", function(event){
+    var element = event.target;
+    if (element.matches("#viewHighScores")=== true){
+        location.assign("highscores.html");
+    }
+});
 
 
 
